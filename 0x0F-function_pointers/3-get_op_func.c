@@ -1,31 +1,31 @@
 #include "3-calc.h"
+#include <stdio.h>
+#include <string.h>
 
 /**
- * get_op_func - selects the correct function to perform
- * the operation asked by the user.
- * @s: char operator.
- *
- * Return: pointer to the function that corresponds to the operator.
- */
+ * get_op_func - Compares function with pointer and returns the equal.
+ * @s: points a char
+ * Return: Returns the function and the operator when equal
+**/
+
 int (*get_op_func(char *s))(int, int)
 {
-	op_t ops[] = {
-		{"+", op_add},
-		{"-", op_sub},
-		{"*", op_mul},
-		{"/", op_div},
-		{"%", op_mod},
-		{NULL, NULL}
-	};
-	int i = 0;
+op_t ops[] = {
+{"+", op_add},
+{"-", op_sub},
+{"*", op_mul},
+{"/", op_div},
+{"%", op_mod},
+{NULL, NULL}
+};
 
-	while (i < 10)
-	{
-		if (s[0] == ops->op[i])
-			break;
-		i++;
-	}
+int i = 0;
 
-	return (ops[i / 2].f);
+while (ops[i].op != NULL)
+{
+if (!strcmp(ops[i].op, s))
+return (ops[i].f);
+i++;
 }
-
+return (NULL);
+}
